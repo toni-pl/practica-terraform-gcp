@@ -47,11 +47,11 @@ terraform destroy
 
 ```
 .
-├── main.tf                          # Configuración principal de Terraform
-├── credentials.json                 # Credenciales GCP (no incluido en el repo)
-├── 01_memoria-terraform.md          # Documentación técnica detallada
-├── practica-gcp-documentacion.pdf   # Documentación en PDF
-└── Practica GCP.jpg                 # Diagrama de arquitectura
+├── main.tf               # Configuración principal de Terraform
+├── credentials.json      # Credenciales GCP (no incluido en el repo)
+├── memoria-terraform.md  # Documentación técnica detallada
+├── documentacion.pdf     # Documentación en PDF
+└── arquitectura-gcp.jpg  # Diagrama de arquitectura
 ```
 
 ## Arquitectura
