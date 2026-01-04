@@ -14,3 +14,6 @@ override.tf
 override.tf.json
 .terraformrc
 terraform.rc
+
+# Ignorar metadatos de Windows/WSL
+*:Zone.Identifier
