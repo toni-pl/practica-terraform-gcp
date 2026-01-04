@@ -1,0 +1,16 @@
+# Ignorar credenciales de Google (MUY IMPORTANTE)
+credentials.json
+*.json
+
+# Ignorar carpetas de Terraform
+.terraform/
+.terraform.lock.hcl
+
+# Ignorar estado de Terraform (contiene datos sensibles)
+*.tfstate
+*.tfstate.*
+crash.log
+override.tf
+override.tf.json
+.terraformrc
+terraform.rc
