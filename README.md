@@ -1,70 +1,45 @@
 # Práctica Terraform GCP: Infraestructura Básica
 
-Proyecto de Infraestructura como Código (IaC) en Google Cloud Platform utilizando Terraform.
+Práctica de Infraestructura como Código (IaC) en Google Cloud Platform utilizando Terraform.
 
 **Autor:** Antonio Prado Lorenzo
+**Entorno:** WSL (Ubuntu)
 
-## Descripción
+## Contenido del Repositorio
 
-Este repositorio contiene la configuración de Terraform para desplegar una infraestructura básica en GCP que incluye:
+| Archivo | Descripción |
+|---------|-------------|
+| `main.tf` | Código Terraform que define toda la infraestructura en GCP |
+| `memoria-terraform.md` | Memoria técnica con justificación de decisiones, proceso de ejecución y conclusiones |
+| `documentacion.pdf` | Documentación completa de la práctica en formato PDF |
+| `arquitectura-gcp.jpg` | Captura de la consola de GCP mostrando los recursos desplegados |
 
-- **VPC personalizada** con subred en `europe-west1`
-- **Regla de firewall** para permitir SSH
-- **Bucket de almacenamiento** en la región EU
-- **Máquina virtual** (Debian 12, e2-micro)
+## Infraestructura Desplegada
 
-## Requisitos
-
-- Terraform >= 1.5
-- Cuenta de Google Cloud Platform
-- Service Account con permisos de administración
-
-## Uso
-
-1. Crear una Service Account en GCP y descargar las credenciales como `credentials.json`
-
-2. Inicializar Terraform:
-```bash
-terraform init
-```
-
-3. Revisar el plan de ejecución:
-```bash
-terraform plan
-```
-
-4. Aplicar la infraestructura:
-```bash
-terraform apply
-```
-
-5. Destruir la infraestructura:
-```bash
-terraform destroy
-```
-
-## Estructura del Proyecto
-
-```
-.
-├── main.tf               # Configuración principal de Terraform
-├── credentials.json      # Credenciales GCP (no incluido en el repo)
-├── memoria-terraform.md  # Documentación técnica detallada
-├── documentacion.pdf     # Documentación en PDF
-└── arquitectura-gcp.jpg  # Diagrama de arquitectura
-```
-
-## Arquitectura
+El archivo `main.tf` define los siguientes recursos en GCP:
 
 | Recurso | Nombre | Descripción |
 |---------|--------|-------------|
 | VPC | `vpc-terraform` | Red virtual en modo personalizado |
 | Subred | `subred-terraform` | Rango `10.0.1.0/24` en `europe-west1` |
-| Firewall | `allow-ssh-terraform` | Permite tráfico TCP/22 |
+| Firewall | `allow-ssh-terraform` | Permite tráfico SSH (TCP/22) |
 | Bucket | `bucket-terraform-anzeni-481408` | Almacenamiento en EU |
-| VM | `vm-terraform` | Debian 12, e2-micro |
+| VM | `vm-terraform` | Instancia Debian 12, tipo e2-micro |
+
+## Uso
+
+1. Crear una Service Account en GCP y descargar las credenciales como `credentials.json`
+
+2. Ejecutar el ciclo de vida de Terraform:
+```bash
+terraform init      # Inicializar
+terraform plan      # Revisar cambios
+terraform apply     # Desplegar
+terraform destroy   # Eliminar infraestructura
+```
 
 ## Seguridad
 
-- El archivo `credentials.json` está excluido del repositorio via `.gitignore`
-- Los archivos de estado de Terraform (`.tfstate`) también están excluidos
+Los siguientes archivos están excluidos del repositorio via `.gitignore`:
+- `credentials.json` - Credenciales de la Service Account
+- `*.tfstate` - Estado de Terraform (contiene datos sensibles)
